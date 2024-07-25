@@ -1,1 +1,1 @@
-1. ### [Знакомство и первые функции](https://habr.com/ru/companies/amvera/articles/826196/)
+### 1. [Знакомство и первые функции](https://habr.com/ru/companies/amvera/articles/826196/)
