@@ -1,26 +1,26 @@
-import pprint
-import requests
+from datetime import date
+
+from models.student import Student
 
 
-def get_all_students():
-    url = "http://127.0.0.1:8000/students"
-    response = requests.get(url)
-    return response.json()
+student_data = {
+    "student_id": 1,
+    "phone_number": "+1234567890",
+    "first_name": "Иван",
+    "last_name": "Иванов",
+    "date_of_birth": date(2000, 1, 1),
+    "email": "ivan.ivanov@example.com",
+    "address": "Москва, ул. Пушкина, д. Колотушкина",
+    "enrollment_year": 2012,
+    "major": "Информатика",
+    "course": 3,
+    "special_notes": "Увлекается программированием"
+}
 
-
-
-students = get_all_students()
-for i in students:
-    pprint.pprint(i)
-
-
-def get_students_with_param_requests(course: int):
-    url = "http://127.0.0.1:8000/students"
-    response = requests.get(url, params={"course": course})
-    return response.json()
-
-
-students = get_students_with_param_requests(course=2)
-for student in students:
-    pprint.pprint(students)
-    print()
+def test_validate_student() -> None:
+    try:
+        student = Student(**student_data)
+    except ValueError as e:
+        print(f"Не удалось проинициализировать студента: {e}")
+        
+test_validate_student()
